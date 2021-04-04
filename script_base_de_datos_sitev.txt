@@ -1,0 +1,116 @@
+﻿SCRIPT CREACION BASE DE DATOS PROYECTO SITEV ( sistema de informacion de tiempos entre vehiculos) 
+Fredy Gonzalez Garcia.
+
+
+
+describe conductor;
+
+#creo tabla condctor
+
+
+CREATE TABLE conductor1 (  
+  celular varchar(10) NOT NULL,
+  nombre varchar(20) NOT NULL,
+  apellido varchar(20)NOT NULL,
+  estado_servicio int,
+  saldo int,
+  PRIMARY KEY (celular) );
+
+insert into conductor1 (celular,nombre,apellido,estado_servicio,saldo) values (3118438432,'Francisco','Rojas',1,0);
+insert into conductor1 (celular,nombre,apellido,estado_servicio,saldo) values (1234567890,'Pablo','Cantor',0,200);
+insert into conductor1 (celular,nombre,apellido,estado_servicio,saldo) values (3126370020,'Mario','Garcia',1,70);
+insert into conductor1 (celular,nombre,apellido,estado_servicio,saldo) values (3065870020,'Morty','sanchez',0,120);
+insert into conductor1 (celular,nombre,apellido,estado_servicio,saldo) values (3065871063,'Mauricio','Gaitan',0,120);
+
+
+  
+CREATE TABLE empresa (
+  ID_empresa int NOT NULL,
+  nombre varchar(20) NOT NULL,
+  telefono int NOT NULL, 
+  direccion varchar(20) NOT NULL,
+  PRIMARY KEY (ID_empresa)
+);
+
+insert into empresa (ID_empresa,nombre,telefono,direccion) values (3,'trans_Autofaca',8428761,'carrera 5 calle 5');
+  
+CREATE TABLE vehiculo (
+  placa varchar(10) NOT NULL,
+  serial int NOT NULL,
+  empresa varchar(20) NOT NULL,
+  marca varchar(20) NOT NULL,
+  modelo int NOT NULL,
+  celular_conductor int NOT NULL,
+  PRIMARY KEY (placa)
+  );
+
+ALTER TABLE vehiculo ADD FOREIGN KEY (celular_conductor) REFERENCES conductor (celular) ;
+ALTER TABLE vehiculo ADD FOREIGN KEY (empresa) REFERENCES empresa (ID_empresa) ;
+
+
+insert into vehiculo (placa,serial,empresa,marca,modelo,celular_conductor) values ('swp-180', 444111,'trans_villetax','Mercedez-benz',2000,3118438432);
+
+insert into vehiculo (placa,serial,empresa,marca,modelo,celular_conductor) values ('swp-220', 444112,'trans_hycata','Non plus ultra',2005,3065870020);
+
+insert into vehiculo (placa,serial,empresa,marca,modelo,celular_conductor) values ('swp-931', 444113,'trans_autofaca','volswagen',2003,1234567890);
+
+insert into vehiculo (placa,serial,empresa,marca,modelo,celular_conductor) values ('TRL-791', 444114,'trans_villetax','Chevrolet',2010,3065871063);
+
+insert into vehiculo (placa,serial,empresa,marca,modelo,celular_conductor) values ('TRL-358', 444115,'trans_hycata','Nissan',2009,3126370020);
+
+CREATE TABLE punto_monitoreo (
+  IDpunto_monitoreo varchar(20) NOT NULL,  
+  nombre varchar(20) NOT NULL,
+  localizacion varchar,
+  PRIMARY KEY (IDpunto_monitoreo)
+);
+
+
+insert into punto_monitoreo (IDpunto_monitoreo,nombre,localizacion) values ('001', 1,'ruta 1');
+insert into punto_monitoreo (IDpunto_monitoreo,nombre,localizacion) values ('002', 2,'ruta 1');
+insert into punto_monitoreo (IDpunto_monitoreo,nombre,localizacion) values ('003', 3,'ruta 1');
+insert into punto_monitoreo (IDpunto_monitoreo,nombre,localizacion) values ('004', 4,'ruta 1');
+
+
+
+
+CREATE TABLE monitoreo (
+  IDmonitoreo varchar(20) NOT NULL,
+  hora_captura varchar(10) NOT NULL,
+  placa_vehiculo varchar(10) NOT NULL,
+  punto_monitoreo varchar(30) NOT NULL,
+  PRIMARY KEY (IDmonitoreo) 
+);
+
+insert into monitoreo (IDmonitoreo,hora_captura,placa_vehiculo,punto_monitoreo) values ('1','4:23 pm' ,'TRL-358','punto1_ruta1');
+insert into monitoreo (IDmonitoreo,hora_captura,placa_vehiculo,punto_monitoreo) values ('2','4:17 pm' ,'TRL-791','punto1_ruta1');
+insert into monitoreo (IDmonitoreo,hora_captura,placa_vehiculo,punto_monitoreo) values ('3','4:35 PM' ,'swp-180','punto1_ruta1');
+insert into monitoreo (IDmonitoreo,hora_captura,placa_vehiculo,punto_monitoreo) values ('4','4:45 PM' ,'swp-220','punto1_ruta1');
+insert into monitoreo (IDmonitoreo,hora_captura,placa_vehiculo,punto_monitoreo) values ('5','4:59 PM' ,'swp-931','punto1_ruta1');
+insert into monitoreo (IDmonitoreo,hora_captura,placa_vehiculo,punto_monitoreo) values ('6','5:09 PM' ,'NJK-713','punto1_ruta1');
+insert into monitoreo (IDmonitoreo,hora_captura,placa_vehiculo,punto_monitoreo) values ('7','5:13 PM' ,'SRT-699','punto1_ruta1');
+insert into monitoreo (IDmonitoreo,hora_captura,placa_vehiculo,punto_monitoreo) values ('8','5:18 PM' ,'JYG-147','punto1_ruta1');
+insert into monitoreo (IDmonitoreo,hora_captura,placa_vehiculo,punto_monitoreo) values ('9','5:24 PM' ,'SPJ-982','punto1_ruta1');
+
+ALTER TABLE monitoreo ADD FOREIGN KEY (placa_vehiculo) REFERENCES vehiculo (placa) ;
+ALTER TABLE monitoreo ADD FOREIGN KEY (punto_monitoreo) REFERENCES punto_monitoreo (IDpunto_monitoreo) ;
+
+#COMANDO show tables;
+
+#COMANDO describe;
+
+#COMANDO select * from   ;
+         
+#COMANDO select * from tb_curso where nom_curso like '%e' ;
+
+#COMANDO insert into empresa (ID_empresa,nombre,telefono,direccion) values (001,'hycata',123456,'carrera1calle4');
+
+#COMANDO alter table conductor modify column nombre varchar(30); cuando la tabla esta vacia o para aumentar valores del mismo tipo de dato)
+
+#COMANDO update empresa set telefono='0318438920';
+
+#COMANDO delete from empresa where ID_empresa='2';
+      
+#COMANDO grant select,insert,delete,update on empresa to fgonzalez;
+
+#COMANDO revoke select,insert on empresa from fgonzalez;
