@@ -247,7 +247,7 @@
     <body>
        
            
-         <a href="formCliente.htm">Administrar Cgggggsliente</a>
+       
          
               <header class="header">
        
@@ -282,7 +282,7 @@
           
 
             <div class="carrosel-item">
-                <img class="carrosel-item__img" src="C:\Users\USUARIO\Documents\FreFre\Sena-ADSI\Inst.-Fernando-Rojas\platzi\CHRONOS\CarruselCHRONOS\GPS.jpg" alt="valor del tiempo" width="200px,  " height="160px">
+                <img class="carrosel-item__img" src="GPS.jpg" alt="valor del tiempo" width="200px,  " height="160px">
                 <div class="carrosel-item__details">
                     <div>
                        

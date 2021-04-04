@@ -26,6 +26,7 @@
        )};              
         
           </script>
+          
         <title>Crud</title>
     </head>
 

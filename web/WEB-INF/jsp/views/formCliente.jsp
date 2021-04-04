@@ -29,6 +29,7 @@
        )};              
         
           </script>
+          <style>color:white</style>
              <title>JSP Page</title>
     </head>
     <body style="background-color: teal">
